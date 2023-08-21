@@ -176,7 +176,7 @@ resource "datadog_monitor" "pods_recent_restarts" {
     {{/is_alert}} 
 
         pods are in a state other than `Running` in ${title(var.service)}.\n
-        For more information see: https://app.datadoghq.com/apm/${title(var.service)}\n\n```\nkubectl get po -A | grep -i  ${var.service} \n```\n\nFor a stack trace:\nhttps://app.datadoghq.com/apm/traces?query=%40_top_level%3A1%20env%3Aprod%20service%3A{{service.name}}\n\n\nFor a program profiler:\n\n{{#is_recovery}}\n@slack-ops-datadog-warnings  \n{{/is_recovery}}\n\n\nNot Ready @chris.montgomery@capacity.com
+        For more information see: https://app.datadoghq.com/apm/${title(var.service)}\n\n```\nkubectl get po -A | grep -i  ${var.service} \n```\n\nFor a stack trace:\nhttps://app.datadoghq.com/apm/traces?query=%40_top_level%3A1%20env%3Aprod%20service%3A{{service.name}}\n\n\nFor a program profiler:\n\n{{#is_recovery}}\n@slack-ops-datadog-warnings  \n{{/is_recovery}}\n\n\nNot Ready @chris.montgomery@.com
         For more information, see: https://app.datadoghq.com/apm/services/${title(var.service)}
 
     {{#is_recovery}}
@@ -214,7 +214,7 @@ resource "datadog_monitor" "pods_terminated" {
     {{/is_alert}} 
 
         pods are in a state other than `Running` in ${title(var.service)} in a comparative 5 minute check against it's state an hour ago.\n
-        For more information see: https://app.datadoghq.com/apm/${title(var.service)}\n\n```\nkubectl get po -A | grep -i  ${var.service} \n```\n\nFor a stack trace:\nhttps://app.datadoghq.com/apm/traces?query=%40_top_level%3A1%20env%3Aprod%20service%3A{{service.name}}\n\n\nFor a program profiler:\n\n{{#is_recovery}}\n@slack-ops-datadog-warnings  \n{{/is_recovery}}\n\n\nNot Ready @chris.montgomery@capacity.com
+        For more information see: https://app.datadoghq.com/apm/${title(var.service)}\n\n```\nkubectl get po -A | grep -i  ${var.service} \n```\n\nFor a stack trace:\nhttps://app.datadoghq.com/apm/traces?query=%40_top_level%3A1%20env%3Aprod%20service%3A{{service.name}}\n\n\nFor a program profiler:\n\n{{#is_recovery}}\n@slack-ops-datadog-warnings  \n{{/is_recovery}}\n\n\nNot Ready @chris.montgomery@.com
         For more information, see: https://app.datadoghq.com/apm/services/${title(var.service)}
 
     {{#is_recovery}}

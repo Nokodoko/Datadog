@@ -158,7 +158,7 @@ resource "datadog_monitor" "velero_backup_failures" {
   ]
 }
 
-resource "datadog_monitor" "capacity_slow" {
+resource "datadog_monitor" "_slow" {
   name    = "(BOT)${title(var.clusterName)} is Slow"
   type    = "query alert"
   query   = "avg(last_5m):avg:interface_gateway_avg_round_trip_time{cluster_name:${var.clusterName}} > 4"

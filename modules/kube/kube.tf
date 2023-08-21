@@ -268,8 +268,8 @@ resource "datadog_monitor" "nodes_have_increased" {
     query   = "avg(last_5m):per_minute(sum:cluster_autoscaler_nodes_count{state:ready} by {kube_cluster_name}) > 100"
     message = <<-EOM
     {{#is_warning}}
-    {{#is_exact_match "kube_cluster_name.name" "production"}}@slack-Capacity-ops-datadog-warnings  {{/is_exact_match}}
-    {{#is_exact_match "kube_cluster_name.name" "staging"}}@slack-Capacity-ops-datadog-staging-warnings   {{/is_exact_match}}
+    {{#is_exact_match "kube_cluster_name.name" "production"}}@slack--ops-datadog-warnings  {{/is_exact_match}}
+    {{#is_exact_match "kube_cluster_name.name" "staging"}}@slack--ops-datadog-staging-warnings   {{/is_exact_match}}
     {{/is_warning}} 
 
     Cluster has scaled in new nodes recently

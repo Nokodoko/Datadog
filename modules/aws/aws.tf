@@ -9,7 +9,7 @@ terraform {
 resource "datadog_monitor" "node_high_memory" {
   name    = "${title(var.aws_autoscaling)} High Memory Usage Detected"
   type    = "metric alert"
-  query   = "avg(last_5m):avg:kubernetes_state.node.memory_capacity{aws_autoscaling_groupname:*} by {aws_autoscaling_groupname} > 250000000000"
+  query   = "avg(last_5m):avg:kubernetes_state.node.memory_{aws_autoscaling_groupname:*} by {aws_autoscaling_groupname} > 250000000000"
   message = <<-EOF
     {{#is_alert}}
     {{#is_exact_match "kube_cluster_name.name" "production"}}${var.alert_recipients_testing}{{/is_exact_match}} 
@@ -44,7 +44,7 @@ resource "datadog_monitor" "node_high_memory" {
 resource "datadog_monitor" "Low_Disk_Space" {
   name    = "${title(var.aws_autoscaling)} has Low Ephemeral Storage"
   type    = "query alert"
-  query   = "avg(last_5m):avg:kubernetes_state.node.ephemeral_storage_capacity{kube_cluster_name:*} - avg:kubernetes_state.node.ephemeral_storage_allocatable{kube_cluster_name:*} < 10000000000"
+  query   = "avg(last_5m):avg:kubernetes_state.node.ephemeral_storage_{kube_cluster_name:*} - avg:kubernetes_state.node.ephemeral_storage_allocatable{kube_cluster_name:*} < 10000000000"
   message = <<-EOF
     {{#is_alert}}
     {{#is_exact_match "kube_cluster_name.name" "production"}}${var.alert_recipients_testing}{{/is_exact_match}} 
