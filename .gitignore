@@ -1,0 +1,7 @@
+.terraform
+.gitbak
+.gitlab-ci.yml
+stateFile
+.terraform
+.terraform.lock.hcl
+.tool-versions
